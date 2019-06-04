@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Place Autocomplete</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta charset="utf-8" />
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #description {
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+      }
+
+      #infowindow-content .title {
+        font-weight: bold;
+      }
+
+      #infowindow-content {
+        display: none;
+      }
+
+      #map #infowindow-content {
+        display: inline;
+      }
+
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+      #pac-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 400px;
+      }
+
+      #pac-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="pac-container">
+      <input id="pac-input" type="text" placeholder="Enter a location" />
+  </div>
+  </div>
+  <div id="map"></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+var countryRestrict = { country: "vn" };
+function initMap() {
+var styles = {
+      default: null,
+      hide: [
+        {
+          featureType: "poi.business",
+          stylers: [{ visibility: "off" }]
+        },
+        {
+          featureType: "transit",
+          elementType: "labels.icon",
+          stylers: [{ visibility: "off" }]
+        }
+      ]
+    };
+var map = new google.maps.Map(document.getElementById("map"), {
+center: new google.maps.LatLng(10.771971, 106.697845),
+zoom: 17,
+
+
+});
+//map.setOptions = map.setOptions({ styles: styles["hide"] });
+
+var card = document.getElementById("pac-card");
+var input = document.getElementById("pac-input");
+var types = document.getElementById("type-selector");
+var strictBounds = document.getElementById("strict-bounds-selector");
+
+map.controls[google.maps.ControlPosition.TOP_RIGHT].push(card);
+
+var autocomplete = new google.maps.places.Autocomplete(input);
+
+// Bind the map's bounds (viewport) property to the autocomplete object,
+// so that the autocomplete requests use the current map bounds for the
+// bounds option in the request.
+autocomplete.bindTo("bounds", map);
+
+// Set the data fields to return when the user selects a place.
+autocomplete.setFields(
+["address_components", "geometry", "icon", "name"],
+{
+  types: ["(cities)"],
+  componentRestrictions: countryRestrict
+}
+);
+
+var infowindow = new google.maps.InfoWindow();
+var infowindowContent = document.getElementById("infowindow-content");
+infowindow.setContent(infowindowContent);
+var marker = new google.maps.Marker({
+map: map,
+anchorPoint: new google.maps.Point(0, -29)
+});
+
+autocomplete.addListener("place_changed", function() {
+var stations = [];
+
+infowindow.close();
+//marker.setVisible(false);
+var place = autocomplete.getPlace();
+// if (!place.geometry) {
+//   // User entered the name of a Place that was not suggested and
+//   // pressed the Enter key, or the Place Details request failed.
+//   window.alert(
+//     "No details available for input: '" + place.name + "'"
+//   );
+//   return;
+// }
+
+//   // If the place has a geometry, then present it on a map.
+if (place.geometry.viewport) {
+  map.fitBounds(place.geometry.viewport);
+} else {
+  map.setCenter(place.geometry.location);
+  map.setZoom(17); // Why 17? Because it looks good.
+}
+marker.setPosition(place.geometry.location);
+marker.setVisible(true);
+var lat = place.geometry.location.lat();
+var lng = place.geometry.location.lng();
+//   console.log(lat);
+//   console.log(lng);
+var coordinate=[lat,lng];
+console.log(coordinate);
+
+fetch('http://localhost:1337/Place/getcoordinate',{
+      method: "POST",
+      headers: {
+          'content-type': 'application/json',
+      },
+      body: JSON.stringify(coordinate),     
+  }).then(res => res.json())
+  .then(result => {
+      console.log(result);
+      // result=stations;
+      // console.log(stations);
+      for (var i = 0; i < result.length; i++) 
+      {
+                  map.setZoom(17);
+        var marker = new google.maps.Marker({
+        map: map,
+        position: result[i],
+                  
+        
+      });
+    }
+
+      
+  })
+//   $.ajax({
+//   type: "GET",
+//   url: "/Place/datalistplace",
+//   contentType: "application/json",
+//   success: function(data) {
+//     stations = data;
+//     //console.log(stations);
+//   },
+//   async: false // <- this turns it into synchronous
+// });
+
+var address = "";
+if (place.address_components) {
+  address = [
+    (place.address_components[0] &&
+      place.address_components[0].short_name) ||
+      "",
+    (place.address_components[1] &&
+      place.address_components[1].short_name) ||
+      "",
+    (place.address_components[2] &&
+      place.address_components[2].short_name) ||
+      ""
+  ].join(" ");
+}
+
+infowindowContent.children["place-icon"].src = place.icon;
+infowindowContent.children["place-name"].textContent = place.name;
+infowindowContent.children["place-address"].textContent = address;
+infowindow.open(map, marker);
+});
+}
+</script>
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfU0HHr85-TMjYIwntpK0utMjlw7naDrM&libraries=places&callback=initMap"
+async
+defer
+></script>
+  </body>
+</html>

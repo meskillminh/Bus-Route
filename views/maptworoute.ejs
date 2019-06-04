@@ -1,0 +1,197 @@
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #map {
+    height: 100%;
+    width: 100%;
+    height: 100%;
+  }
+</style> -->
+
+<div id="map"></div>
+
+<script>
+  var directionsDisplay;
+  var directionsService = new google.maps.DirectionsService();
+
+  function initMap() {
+    var service = new google.maps.DirectionsService();
+    directionsDisplay = new google.maps.DirectionsRenderer({
+      polylineOptions: {
+        strokeColor: "red"
+      }
+    });
+
+    // var mapOptions = {
+    // 	// zoom: 8,
+    // 	// center: myLatlng,
+    // 	mapTypeId: "roadmap"
+    // };
+    var styles = {
+      default: null,
+      hide: [
+        {
+          featureType: "poi.business",
+          stylers: [{ visibility: "off" }]
+        },
+        {
+          featureType: "transit",
+          elementType: "labels.icon",
+          stylers: [{ visibility: "off" }]
+        }
+      ]
+    };
+    var map = new google.maps.Map(document.getElementById("map"), styles);
+    map.setOptions = map.setOptions({ styles: styles["hide"] });
+    directionsDisplay.setMap(map);
+
+    // list of points
+    var stations = [];
+    var stations2 = [];
+
+    $.ajax({
+      type: "GET",
+      url: "/Route/firstroute",
+      contentType: "application/json",
+      success: function(data) {
+        stations = data;
+      },
+      async: false // <- this turns it into synchronous
+    });
+    $.ajax({
+      type: "GET",
+      url: "/Route/seccondroute",
+      // url: "/Place/datalistplace",
+      contentType: "application/json",
+      success: function(data) {
+        stations2 = data;
+      },
+      async: false // <- this turns it into synchronous
+    });
+    console.log(stations);
+    console.log(stations2);
+
+    // Zoom and center map automatically by stations (each station will be in visible map area)
+    var lngs = stations.map(function(station) {
+      return station.lng;
+    });
+    var lats = stations.map(function(station) {
+      return station.lat;
+    });
+    map.fitBounds({
+      west: Math.min.apply(null, lngs),
+      east: Math.max.apply(null, lngs),
+      north: Math.min.apply(null, lats),
+      south: Math.max.apply(null, lats)
+    });
+
+    // Show stations on the map as markers
+    var iconbase = {
+      url: "/assets/images/busicon.png",
+      scaledSize: new google.maps.Size(20, 20), // scaled size
+      origin: new google.maps.Point(0, 0), // origin
+      anchor: new google.maps.Point(0, 0) // anchor
+    };
+    for (var i = 0; i < stations.length; i++) {
+      new google.maps.Marker({
+        position: stations[i],
+        map: map,
+        title: stations[i].name,
+        icon: "https://img.icons8.com/color/30/000000/trolleybus.png"
+        //  icon: iconbase
+      });
+    }
+    for (var i = 0; i < stations2.length; i++) {
+      new google.maps.Marker({
+        position: stations2[i],
+        map: map,
+        title: stations2[i].name,
+        icon: "https://img.icons8.com/color/30/000000/trolleybus.png"
+        //  icon: iconbase
+      });
+    }
+
+    // Divide route to several parts because max stations limit is 25 (23 waypoints + 1 origin + 1 destination)
+    for (var i = 0, parts = [], max = 25 - 1; i < stations.length; i = i + max)
+      parts.push(stations.slice(i, i + max + 1));
+    console.log(parts);
+
+    for (
+      var j = 0, parts1 = [], max = 25 - 1;
+      j < stations2.length;
+      j = j + max
+    )
+      parts1.push(stations2.slice(j, j + max + 1));
+    console.log(parts1);
+
+    // Service callback to process service results
+    var service_callback = function(response, status) {
+      if (status != "OK") {
+        console.log("Directions request failed due to " + status);
+        return;
+      }
+
+      var renderer = new google.maps.DirectionsRenderer();
+      renderer.setMap(map);
+      renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
+      renderer.setDirections(response);
+      //directionsDisplay.setDirections(response);
+    };
+    var service_callback1 = function(response, status) {
+      if (status != "OK") {
+        console.log("Directions request failed due to " + status);
+        return;
+      }
+
+      var renderer = new google.maps.DirectionsRenderer();
+      renderer.setMap(map);
+      renderer.setOptions({ suppressMarkers: true, preserveViewport: true });
+      //renderer.setDirections(response);
+      directionsDisplay.setDirections(response);
+    };
+
+    // Send requests to service to get route (for stations count <= 25 only one request will be sent)
+    for (var i = 0; i < parts.length; i++) {
+      // Waypoints does not include first station (origin) and last station (destination)
+      var waypoints = [];
+      for (var j = 1; j < parts[i].length - 1; j++)
+        waypoints.push({ location: parts[i][j], stopover: false });
+      // Service options
+      var service_options = {
+        origin: parts[i][0],
+        destination: parts[i][parts[i].length - 1],
+        waypoints: waypoints,
+        travelMode: "DRIVING"
+      };
+      // Send request
+      service.route(service_options, service_callback);
+    }
+
+    for (var i = 0; i < parts1.length; i++) {
+      // Waypoints does not include first station (origin) and last station (destination)
+      var waypoints = [];
+      for (var j = 1; j < parts1[i].length - 1; j++)
+        waypoints.push({ location: parts1[i][j], stopover: false });
+      // Service options
+      var service_options = {
+        origin: parts1[i][0],
+        destination: parts1[i][parts1[i].length - 1],
+        waypoints: waypoints,
+        travelMode: "DRIVING"
+      };
+      // Send request
+      service.route(service_options, service_callback1);
+    }
+  }
+</script>
+<script
+  async
+  defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfU0HHr85-TMjYIwntpK0utMjlw7naDrM
+  &callback=initMap"
+></script>

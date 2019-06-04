@@ -1,0 +1,106 @@
+.x-menu-bound{
+	position:absolute;
+}
+/*CSS for top menu*/
+.x-menu-bound-top{
+
+}
+.x-menu-bound-top-left{
+	float:left;
+	background-image:url(../images/menu/bound_top_left.png) !important;
+}
+.x-menu-bound-top-midd{
+	float:left;
+	background-image:url(../images/menu/bound_top_mid.png);
+}
+.x-menu-bound-top-right{
+	float:right;
+	background-image:url(../images/menu/bound_top_right.png) !important;
+}
+/*CSS for content menu*/
+.x-menu-bound-content{
+
+}
+.x-menu-bound-content-left{
+	float:left;
+	background-image:url(../images/menu/bound_content_left.png) !important;
+}
+.x-menu-bound-content-midd{
+	float:left;
+	background-image:url(../images/menu/bound_content_mid.html);
+	background-color:#FFFFFF;
+}
+.x-menu-bound-content-right{
+	float:right;
+	background-image:url(../images/menu/bound_content_right.png) !important;
+}
+/*CSS for bottom menu*/
+.x-menu-bound-bottom{
+
+}
+.x-menu-bound-bottom-left{
+	float:left;
+	background-image:url(../images/menu/bound_bottom_left.png) !important;
+}
+.x-menu-bound-bottom-midd{
+	float:left;
+	background-image:url(../images/menu/bound_bottom_mid.png);
+}
+.x-menu-bound-bottom-right{
+	float:right;
+	background-image:url(../images/menu/bound_bottom_right.png) !important;
+}
+.x-menu-clear{
+	clear:both;
+}
+
+
+/*CSS for items menu*/
+.x-menu-items{
+	padding:5px 0 0 5px;
+	cursor:pointer;
+	position:relative;
+}
+.x-menu-items-icon{
+	float:left;
+	background-image:url(../images/menu/pixel.gif);
+	z-index:1;
+}
+.x-menu-items-text{
+	float:left;
+	font-family:Tahoma;
+	font-size:11px;
+	padding:2px 0 0 5px;
+	z-index:1;
+}
+.x-menu-items-text-disabled{
+	float:left;
+	font-family:Tahoma;
+	font-size:11px;
+	color:#aca899;
+	padding:2px 0 0 5px;
+	z-index:1;
+}
+.x-menu-items-arrow{
+	float:left;
+	background-image:url(../images/menu/menu-arrow.png) !important;
+	z-index:1;
+}
+.x-menu-separator{
+	background-image:url(../images/menu/menu-separator.png) !important;
+}
+.x-menu-items-event{
+	position:absolute;
+	top:0px;
+	left:0px;
+	z-index:2;
+	background-color:#FFFFFF;
+	filter:alpha(opacity=1);
+	-moz-opacity: 0.01;
+	opacity: 0.01;
+}
+
+/*CSS test*/
+.x-menu-items-home{
+	background-image:url(../images/menu/home.gif) !important;
+}

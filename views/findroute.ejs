@@ -1,0 +1,115 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>Serach Route <small>Test</small></h1>
+    <br />
+    <!-- search form -->
+    <div>
+      <div class="row" style="margin-bottom: 15px">
+        <form method="post" action="/Route/findtworoutes/" id="formsearchroute">
+          <!-- <form method="post" action="/Route/waypoint" id="formsearchroute"></form> -->
+          <div class="col-md-1 text-right">
+            <label>from</label>
+          </div>
+
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="usr" name="from" />
+          </div>
+          <div class="col-md-1 text-right">
+            <label>to</label>
+          </div>
+
+          <div class="col-md-8">
+            <input type="text" class="form-control" id="usr" name="to" />
+          </div>
+        </form>
+        <div class="col-md-1">
+          <button
+            type="submit"
+            form="formsearchroute"
+            class="btn btn-add"
+            style="margin-left: -40%"
+          >
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-md-2">
+          <a href="/Route/viewformaddroute/"
+            ><button class="btn btn-add">Add</button></a
+          >
+          <form method="POST" action="/Route/deleteAll/">
+            <button class="btn btn-add">Delete All</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /.search form -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <% routes.forEach(function(route){ %>
+    <div class="row">
+      <div class="col-12">
+        <div class="box">
+          <div class="box-header">
+            <div class="col-md-4 text-left"></div>
+            <div class="col-12 text-right">
+              <a href="/Route/edit/<%= route.id %>">
+                <button class="btn btn-add">Edit</button>
+              </a>
+              <form method="POST" action="/Route/delete/<%= route.id%>">
+                <button class="btn btn-add">Delete</button>
+              </form>
+              <form method="POST" action="/Route/waypoint/<%= route.id%>">
+                <button type="submit" class="btn btn-add">Direction</button>
+              </form>
+            </div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example2" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Mã tuyến</th>
+                  <th>From</th>
+                  <th>To</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= route.Routeno%></td>
+                  <td><%= route.from%></td>
+                  <td><%= route.To%></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <% }) %>
+  </section>
+</div>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Create the tabs -->
+  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+    <li>
+      <a href="#control-sidebar-home-tab" data-toggle="tab"
+        ><i class="fa fa-home"></i
+      ></a>
+    </li>
+    <li>
+      <a href="#control-sidebar-settings-tab" data-toggle="tab"
+        ><i class="fa fa-gears"></i
+      ></a>
+    </li>
+  </ul>
+</aside>
+<!-- /.control-sidebar -->
+<div class="control-sidebar-bg"></div>

@@ -1,0 +1,103 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Place Form
+      <small>Test</small>
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <form method="post" action="/Place/update/<%=places.id%>">
+    <section class="content">
+      <!-- <div class="row" style="margin-bottom: 15px">
+              <div class="col-md-1 text-right">
+                <label>Mã Tuyến</label>
+              </div>
+              <div class="col-md-11">
+                <input type="text" class="form-control" id="usr" name="" />
+              </div>
+            </div> -->
+
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Tên Trạm</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="text"
+            class="form-control"
+            id="usr"
+            name="Name"
+            value="<%= places.Name %>"
+            required="required"
+          />
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Vĩ Độ</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="number"
+            class="form-control"
+            id="usr"
+            name="Lat"
+            value="<%= places.Lat %>"
+            required="required"
+          />
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Tung Độ</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="number"
+            class="form-control"
+            id="usr"
+            name="Long"
+            value="<%= places.Long %>"
+            required="required"
+          />
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="col-md-12 text-right" style="padding-bottom: 20px">
+        <input type="submit" value="Lưu" class="btn btn-primary" />
+        <input type="reset" value="Hủy" class="btn btn-primary" />
+      </div>
+    </footer>
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Create the tabs -->
+      <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li>
+          <a href="#control-sidebar-home-tab" data-toggle="tab"
+            ><i class="fa fa-home"></i
+          ></a>
+        </li>
+        <li>
+          <a href="#control-sidebar-settings-tab" data-toggle="tab"
+            ><i class="fa fa-gears"></i
+          ></a>
+        </li>
+      </ul>
+    </aside>
+    <!-- /.control-sidebar -->
+    <div class="control-sidebar-bg"></div>
+    <!-- <footer class="main-footer">
+     <div class="row" style="margin-left: 90%">
+       <b>
+         <input type="submit" value="save" class="btn btn-primary" />
+         <!-- <button>Cancel</button> -->
+    <!-- </b>
+     </div>
+   </footer>  -->
+  </form>
+</div>

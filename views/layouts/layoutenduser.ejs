@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+  </head>
+  <style>
+    .nav-tabs > li > a {
+      border-radius: 5px;
+    }
+    .nav-tabs > li {
+      width: 50%;
+      padding: 0px;
+    }
+    .form-group {
+      margin: 10px;
+    }
+    /* #map {
+      height: 100%;
+    } */
+    /* Optional: Makes the sample page fill the window. */
+
+    #description {
+      font-family: Roboto;
+      font-size: 15px;
+      font-weight: 300;
+    }
+
+    #infowindow-content .title {
+      font-weight: bold;
+    }
+
+    #infowindow-content {
+      display: none;
+    }
+
+    #map #infowindow-content {
+      display: inline;
+    }
+
+    .pac-card {
+      margin: 10px 10px 0 0;
+      border-radius: 2px 0 0 2px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      outline: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      background-color: #fff;
+      font-family: Roboto;
+    }
+
+    #pac-container {
+      padding-bottom: 12px;
+      margin-right: 12px;
+    }
+
+    .pac-controls {
+      display: inline-block;
+      padding: 5px 11px;
+    }
+
+    .pac-controls label {
+      font-family: Roboto;
+      font-size: 13px;
+      font-weight: 300;
+    }
+
+    #pac-input {
+      background-color: #fff;
+      font-family: Roboto;
+      font-size: 15px;
+      font-weight: 300;
+      margin-left: 12px;
+      padding: 0 11px 0 13px;
+      text-overflow: ellipsis;
+      width: 70%;
+      border-radius: 2px;
+      margin-bottom: 5px;
+    }
+
+    #pac-input:focus {
+      border-color: #4d90fe;
+    }
+
+    #title {
+      color: #fff;
+      background-color: #4d90fe;
+      font-size: 25px;
+      font-weight: 500;
+      padding: 6px 12px;
+    }
+    #target {
+      width: 345px;
+    }
+    html,
+			body {
+				height: 100%;
+				padding: 0;
+				margin: 0;
+				color: black;
+				font-family: arial, sans-serif;
+				font-size: 13px;
+			}
+
+			#map {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+			}
+            
+
+			#panel-wpr {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 70%;
+				left: 0;
+				overflow: auto;
+			}
+
+			#panel {
+				font-family: "Times New Roman", Times, serif;
+				padding: 0 5px;
+			}
+
+			#info {
+				padding: 5px;
+			}
+
+			/* #from {
+				width: 90%;
+				font-size: 1.2em;
+			} */
+
+			.adp-directions {
+				width: 100%;
+			}
+
+			/* .input {
+				background-color: white;
+				padding-left: 8px;
+				border: 1px solid #d9d9d9;
+				border-top: 1px solid silver;
+				-webkit-border-radius: 1px;
+				-moz-border-radius: 1px;
+				border-radius: 1px;
+			} */
+
+			/* .time {
+				margin: 0;
+				height: 17px;
+				border: 1px solid;
+				border-top-color: #ccc;
+				border-right-color: #999;
+				border-left-color: #999;
+				border-bottom-color: #ccc;
+				padding: 2px 15px 1px 1px;
+			} */
+			/* #map {
+				z-index: -1;
+			} */
+
+			button {
+				border: 1px solid #3079ed;
+				color: white;
+				background-color: #4d90fe;
+				background-image: -webkit-gradient(
+					linear,
+					left top,
+					left bottom,
+					from(#4d90fe),
+					to(#4787ed)
+				);
+				background-image: -webkit-linear-gradient(top, #4d90fe, #4787ed);
+				background-image: -moz-linear-gradient(top, #4d90fe, #4787ed);
+				background-image: -ms-linear-gradient(top, #4d90fe, #4787ed);
+				background-image: -o-linear-gradient(top, #4d90fe, #4787ed);
+				background-image: linear-gradient(top, #4d90fe, #4787ed);
+				filter: progid: DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe', EndColorStr='#4787ed');
+				display: inline-block;
+				min-width: 54px;
+				text-align: center;
+				font-weight: bold;
+				padding: 0 8px;
+				line-height: 27px;
+				-webkit-border-radius: 2px;
+				-moz-border-radius: 2px;
+				border-radius: 2px;
+				-webkit-transition: all 0.218s;
+				-moz-transition: all 0.218s;
+				-o-transition: all 0.218s;
+				transition: all 0.218s;
+			}
+
+			#info div {
+				line-height: 22px;
+				font-size: 110%;
+			}
+
+			
+			#panel-wpr {
+				border-left: 1px solid #e6e6e6;
+			}
+
+			#info {
+				border-bottom: 1px solid #e6e6e6;
+				margin-bottom: 5px;
+			}
+
+			h2 {
+				margin: 0;
+				padding: 0;
+			}
+            .row{
+                height: 80vh;
+            }
+            .tab-content{
+                height: 80vh;
+            }
+            .col-sm-3{
+                height: 86vh;
+                overflow-y: auto;
+            }
+  
+  </style>
+  <body>
+    <div class="container-fluid" style="background-color: #1E90FF; padding-bottom: 5px;">
+      <header>
+      
+    <h1 style="color: white">BUS ROUTE</h1>
+    <p style="color: white">Tra cứu thông tin xe buýt.</p>
+  </header>
+    <div class="row">
+      <div class="col-sm-3" style="background-color:lavender; ">
+    <ul class="nav nav-tabs" role="tablist" style="margin: 5px;">
+    <li class="active"><a href="#hometab" role="tab" data-toggle="tab">Tra Cứu</a></li>
+    <li><a href="#javatab" role="tab" data-toggle="tab">Tìm Đường</a></li>
+  
+    
+  </ul>
+  </li>
+  <!-- Tab panes -->
+  <div class="tab-content" >
+    
+          <div class="tab-pane active" id="hometab">     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="padding: 0px;">
+
+            <form class="form-inline mr-auto" style="margin: 0px; padding-top: 10px;" method="POST" action="/Route/find/">
+              <input class="form-control" type="text" placeholder="Search" aria-label="Search" style="padding: 0px; margin: 0px; width: 220px;" name="searchtext"> 
+              <button type="submit" class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2" type="submit" style="background-color:#337ab7; color: white" >Search</button>
+            </form>
+            <table class="table table-light">
+              <tbody>
+                 
+                  <% typeof routes != "undefined" ? routes.forEach(function(route){ %>
+                    
+                      <tr>
+                        <form id="tag<%=route.id%>" action="/Route/waypoint/<%= route.id%>" method="post" class="Demo">
+                            
+                              <th scope="row"><span class="badge badge-primary" style="background-color: #4d90fe"><%= route.Routeno%></span></th>
+                              <!-- <td><%= route.id%></td> -->
+                              <td><%= route.from%></td>
+                              <td><%= route.To%></td>
+                              <%if(route.status==true){%>
+                              <td>Đi</td>
+                              <%}else{%>
+                                <td>Về</td>
+                              <%}%>
+                              <td><button class="btn btn-primary" type="submit">Đi</button></td>
+                         
+                        </form>
+                       
+                     
+                    </tr>
+                    
+                
+                  
+              
+               
+             
+                  <% }) : '' %>
+                  <% typeof routedt != "undefined" ? routedt.forEach(function(route){ %>
+                  
+                    <div id="row">
+                        
+
+                        <div class="col-sm-6">
+                            <%= route.Routeno%>
+       </div>
+       <div class="col-sm-6">
+          <%= route.from%> - <%= route.To%>
+       </div>
+                        </div>
+                   
+                    <ul class="nav nav-tabs" role="tablist" style="margin: 5px;">
+                            <li class="active"><a href="#station" role="tab" data-toggle="tab">Trạm</a></li>
+                            <li><a href="#info" role="tab" data-toggle="tab">Thông Tin</a></li>
+                          
+                            
+                          </ul>
+                          <div class="tab-content" >
+                              <div class="tab-pane active" id="station">
+                                <%var dem=1;%>
+                                  <% typeof indexroute != "undefined" ? indexroute.forEach(function(place){ %>
+                            
+                                   
+                                        <div id="row">
+                        
+                                        
+                                            <div class="col-sm-1 badge badge-pill badge-light" style="background-color: #1E90FF; margin-bottom:5px">
+                                                 
+                                               <!-- <b> <%=place.id%></b> -->
+                                              <%=dem%>
+                                               <%dem++;%>
+                           </div>
+                           <div class="col-sm-11" style="margin-bottom: 5px">
+                              <%=place.Name%>
+                           </div>
+                         
+                          </div>
+                                           
+                                           
+                                           
+                                     
+                                      <% }) : '' %>
+                              </div>
+                  <div class="tab-pane" id="info" >
+                    <div  style="font-size: 13px">
+                      <div class="col-sm-6"><b>Thời gian:</b></div>
+                      <div class="col-sm-6"><%= route.time%></div>
+                    </div>
+                    <div style="font-size: 13px">
+                      <div class="col-sm-6"><b>Loại hình:</b></div>
+                      <div class="col-sm-6" ><%= route.type%></div>
+                      </div>
+                      <div style="font-size: 13px">
+                          <div class="col-sm-6"><b>Giá vé:</b></div>
+                          <div class="col-sm-6" ><%= route.price%></div>
+                      </div>
+                      <div style="font-size: 13px">
+                          <div class="col-sm-6"><b>Vé tháng:</b></div>
+                          <div class="col-sm-6" ><%= route.pricemonth%></div>
+                      </div>
+                      <div style="font-size: 13px">
+                          <div class="col-sm-6"><b>Độ dài tuyến:</b></div>
+                          <div class="col-sm-6" ><%= route.distance%></div>
+                      </div>
+                      <div style="font-size: 13px">
+                          <div class="col-sm-6"><b>Thời gian chờ:</b></div>
+                          <div class="col-sm-6" ><%= route.waittime%></div>
+                      </div>
+                      <div style="font-size: 13px">
+                          <div class="col-sm-6"><b>Lượt:</b></div>
+                          <%if(route.status==true){%>
+                          <div class="col-sm-6" >Đi</div>
+                          <%}else{%>
+                            <div class="col-sm-6" >Về</div>
+                          <%}%>
+                      </div>
+                     <!-- <div>
+                    <div class="col-sm-4">
+                       <b style="	font-size: 13px">Thời gian:</b>
+                     </div>
+                     <div class="col-sm-8" style="	font-size: 13px">
+                        <%= route.time%>
+                     </div>
+                     </div>
+                      <div >
+                        <div class="col-sm-4">
+                           <b style="	font-size: 13px">Loại hình:</b>
+                         </div>
+                         <div class="col-sm-8" >
+                            <%= route.type%>
+                         </div>
+                      </div> -->
+                                          <!-- <div id="row">
+                        
+
+                                              <div class="col-sm-4">
+                               <b style="	font-size: 13px">Giá vé:</b>
+                             </div>
+                             <div class="col-sm-8" style="	font-size: 13px">
+                                <%= route.price%>
+                             </div>
+                                              </div>
+                                              <div id="row">
+                        
+
+                                                  <div class="col-sm-4">
+                                   <b style="	font-size: 13px">Giá vé tháng:</b>
+                                 </div>
+                                 <div class="col-sm-8" style="	font-size: 13px">
+                                    <%= route.pricemonth%>
+                                 </div>
+                                                  </div> -->
+                              
+                          </div>
+              
+   
+                    
+                    <!-- <div><b>Mã số tuyến</b><span<%= route.Routeno%></span></div>
+                    <div><b>Điểm đi</b><span><%= route.from%></span></div>
+                    <div><b>Điểm đến</b><span><%= route.To%></span></div>
+                    <div><label>Trạm Dừng</label>
+                        <% typeof indexroute != "undefined" ? indexroute.forEach(function(place){ %>
+                          <div><b>Mã trạm</b>
+                            <%=place.id%>
+                          </div>
+                          <div><b>Tên trạm</b>
+                              <%=place.Name%>
+                            </div>
+                          <% }) : '' %>
+                    </div> -->
+
+
+                     
+                   
+                
+              
+             
+            
+             
+           
+                <% }) : '' %>
+                 
+              </tbody>
+          </table>
+      
+        
+          </div></div>
+          <div class="tab-pane" id="javatab" >
+            <div class="row">
+              <div class="col-sm-12" align="center">
+             
+                     <form id='form-id'>
+                        <input id='watch-me' name='test' type='radio'  /> Tìm theo google
+                         <!-- <input id='see-me' name='test' type='radio' /> Radio 2 -->
+                         <input id='look-me' name='test' type='radio' checked/> Theo theo trạm
+                     </form>
+                     <br><br>
+                     <div id='show-me'style='display:none;'>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Điểm Đi</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="from"
+                                placeholder="Nhập điểm đi"
+                                name="from"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Điểm Đến</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="to"
+                                placeholder="Nhập điểm đến"
+                                name="to"
+                            />
+                        </div>
+                        <div>
+                            Khởi Hành
+                            <select id="depart"></select>
+                        </div>
+                        <div class="btn">
+                            <button id="go">Chỉ Đường</button>
+                        </div>
+                       
+                        
+                        <div id="panel"></div>
+                    </div>
+                     
+                     
+                     <!-- <div id='show-me-two' style='display:none;'>    <div class="form-group">
+                        <label for="exampleInputEmail1">Điểm Đi</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="from"
+                            placeholder="Nhập điểm đi"
+                            name="from"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Điểm Đến</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="to"
+                            placeholder="Nhập điểm đến"
+                            name="to"
+                        />
+                    </div>
+                    <div>
+                        Depart at
+                        <select id="depart"></select>
+                    </div>
+                    <div class="btn">
+                        <button id="go">Get Directions</button>
+                    </div>
+                   
+                    
+                    <div id="panel"></div>
+                </div> -->
+				<div id='show-me-three' >
+							<form
+							method="post"
+							action=" /Route/findtworoutes/">
+				     <div class="form-group">
+                        <label for="exampleInputEmail1">Điểm Đi</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="from"
+                            placeholder="Nhập điểm đi"
+                            name="from"
+                            list="browsers"
+                        />
+                       
+                        <datalist id="browsers">
+                            <% typeof places1 != "undefined" ? places1.forEach(function(place){ %>
+                            <option value="<%=place%>">
+                                <% }) : '' %>
+                          </datalist>
+                       
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Điểm Đến</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="to"
+                            placeholder="Nhập điểm đến"
+                            name="to"
+                            list="browsers1"
+                        />
+                        <datalist id="browsers1">
+                            <% typeof places1 != "undefined" ? places1.forEach(function(place){ %>
+                            <option value="<%=place%>">
+                                <% }) : '' %>
+                          </datalist>
+                    </div>
+                   
+                  
+                    <button type="submit" class="btn btn-primary" >Tìm</button>
+                   
+                   
+                    
+
+        </form>
+        <table class="table table-light">
+            <tbody>
+           
+             
+                <% typeof routes1 != "undefined" ? routes1.forEach(function(route){ %>
+                 
+                    
+                  <tr >
+                      <form action="/Route/waypoint/<%= route.id%>" method="post">
+                    <th scope="row"><span class="badge badge-primary" style="background-color: #4d90fe"><%= route.Routeno%></span></th>
+                    <td><%= route.from%></td>
+                    <td><%= route.To%></td>
+                    <td><button class="btn btn-primary" type="submit">Đi</button></td>
+                  </form>
+                  </tr>
+                
+                
+             
+                  <% }) : '' %>
+                  <% typeof routes2 != "undefined" ? routes2.forEach(function(route){ %>
+                    
+                    <tr>
+                      <form action="/Route/listwaypointof2route/<%= route.id%>" method="post" >
+                        <th><%= route.middle%></th>
+                        <td><span class="badge badge-primary" style="background-color: #4d90fe"><%= route.firstroute.Routeno%></span></td>
+                        <td><span class="badge badge-primary" style="background-color: #4d90fe"><%= route.seccondroute.Routeno%></span></td>
+                        <td><button class="btn btn-primary" type="submit">Đi</button></td>
+                      </form>
+                    </tr>
+                 
+                    <% }) : '' %>
+             
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+               
+            </tbody>
+        </table>
+                </div>
+                       
+              </div>
+             </div>
+             
+<script>
+  $(document).ready(function () 
+ { 
+  $("#watch-me").click(function()
+  {
+    $("#show-me:hidden").show('slow');
+   $("#show-me-two").hide();
+   $("#show-me-three").hide();
+   });
+   $("#watch-me").click(function()
+  {
+    if($('watch-me').prop('checked')===false)
+   {
+    $('#show-me').hide();
+   }
+  });
+  
+  
+  
+  
+  
+  
+  $("#see-me").click(function()
+  {
+    $("#show-me-two:hidden").show('slow');
+   $("#show-me").hide();
+   $("#show-me-three").hide();
+   });
+   $("#see-me").click(function()
+  {
+    if($('see-me-two').prop('checked')===false)
+   {
+    $('#show-me-two').hide();
+   }
+  });
+  
+  
+  
+  
+  
+  
+  
+  $("#look-me").click(function()
+  {
+    $("#show-me-three:hidden").show('slow');
+   $("#show-me").hide();
+   $("#show-me-two").hide();
+   });
+   $("#look-me").click(function()
+  {
+    if($('see-me-three').prop('checked')===false)
+   {
+    $('#show-me-three').hide();
+   }
+  });
+  
+ });
+
+
+</script>                
+           
+                
+               
+               
+               
+              </div>
+              
+             
+          
+        </div>
+  
+      </div>
+      <div class="col-sm-9" style="height:86vh;">
+        
+            <div id="transit-wpr">
+             
+                   
+                <input id="pac-input" class="form-control" type="text" placeholder="Search Box" style="width: 100%; margin-right: 40vw; margin-top: 10px;">
+                <span>
+                 
+                <button id="transit" style="float: right">Toggle transit layer</button>
+              </span>
+                </div>
+             
+                
+                <%- body %>
+    
+                
+            
+    </div>
+  </div>
+  </body>
+   
+ 
+ 
+</html>

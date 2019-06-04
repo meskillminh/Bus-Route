@@ -1,0 +1,130 @@
+<!DOCTYPE html >
+<meta http-equiv="Cache-control" content="no-must-revalidate">
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>Admin</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <!-- <link rel="stylesheet" href="../../assets/bower_components/bootstrap/dist/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <!-- <link rel="stylesheet" href="../../assets/bower_components/font-awesome/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <!-- <link rel="stylesheet" href="../../assets/bower_components/Ionicons/css/ionicons.min.css"> -->
+  <link href="//code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+  <!-- daterange picker -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-daterangepicker/3.0.5/daterangepicker.css"> -->
+  <!-- bootstrap datepicker -->
+  <!-- <link rel="stylesheet" href="../../assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"> -->
+  <!-- iCheck for checkboxes and radio inputs -->
+  <!-- <link rel="stylesheet" href="../../assets/plugins/iCheck/all.css"> -->
+  <!-- Bootstrap Color Picker -->
+  <!-- <link rel="stylesheet" href="/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css"> -->
+  <!-- Bootstrap time Picker -->
+  <!-- <link rel="stylesheet" href="/plugins/timepicker/bootstrap-timepicker.min.css"> -->
+  <!-- Select2 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.10/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.10/css/skins/_all-skins.min.css">
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+          <!-- Logo -->
+          <a href="/Admin" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>A</b>BR</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Admin</b>BusRoute</span>
+          </a>
+          <!-- Header Navbar: style can be found in header.less -->
+          <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+          </nav>
+        </header>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar">
+          <!-- sidebar: style can be found in sidebar.less -->
+          <section class="sidebar">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+              <li class="header">MAIN NAVIGATION</li>
+              <li class="treeview active">
+                <a href="#">
+                  <i class="fa fa-edit"></i> <span>Quản Lí</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li>
+                    <a href="/Admin"><i class="fa fa-circle-o"></i>Tuyến</a>
+                  </li>
+                  <li>
+                    <a href="/place/list"><i class="fa fa-circle-o"></i>Trạm</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="treeview active">
+                <a href="#">
+                  <i class="fa fa-table"></i> <span>Quản Trị Viên</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li class="active">
+                    <a href="/User"
+                      ><i class="fa fa-circle-o"></i>Quản Trị Viên</a
+                    >
+                  </li>
+               
+                  <li><a href="/logout">Đăng Xuất</a></li>
+                  
+                </ul>
+              </li>
+            
+                    
+
+          
+          </section>
+          <!-- /.sidebar -->
+        </aside>
+ 
+
+    <!-- Content Wrapper. Contains page content -->
+    
+
+    <%- body %>
+         </div>
+  <!-- jQuery 3 -->
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <!-- <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- FastClick -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.10/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.10/js/demo.js"></script>
+</body>
+
+</html>

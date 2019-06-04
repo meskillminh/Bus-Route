@@ -1,0 +1,198 @@
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #map {
+    height: 100%;
+    width: 100%;
+    height: 100%;
+  }
+</style> -->
+
+<div id="map"></div>
+
+<!-- <script>
+  function initMap() {
+    var service = new google.maps.DirectionsService();
+  
+    var styles = {
+      default: null,
+      hide: [
+        {
+          featureType: "poi.business",
+          stylers: [{ visibility: "off" }]
+        },
+        {
+          featureType: "transit",
+          elementType: "labels.icon",
+          stylers: [{ visibility: "off" }]
+        }
+      ]
+    };
+    var map = new google.maps.Map(document.getElementById("map"), styles);
+    map.setOptions = map.setOptions({ styles: styles["hide"] });
+
+    // list of points
+
+    var stations = [];
+
+    $.ajax({
+      type: "GET",
+      url: "/Route/all",
+      contentType: "application/json",
+      success: function(data) {
+        stations = data;
+      },
+      async: false // <- this turns it into synchronous
+    });
+    console.log(stations);
+
+    // Zoom and center map automatically by stations (each station will be in visible map area)
+    var lngs = stations.map(function(station) {
+      return station.lng;
+    });
+    var lats = stations.map(function(station) {
+      return station.lat;
+    });
+    map.fitBounds({
+      west: Math.min.apply(null, lngs),
+      east: Math.max.apply(null, lngs),
+      north: Math.min.apply(null, lats),
+      south: Math.max.apply(null, lats)
+    });
+
+    // Show stations on the map as markers
+    for (var i = 0; i < stations.length; i++) {
+      new google.maps.Marker({
+        position: stations[i],
+        map: map,
+        title: stations[i].name,
+        icon: "https://img.icons8.com/color/20/000000/trolleybus.png"
+      });
+    }
+
+    // Divide route to several parts because max stations limit is 25 (23 waypoints + 1 origin + 1 destination)
+    for (var i = 0, parts = [], max = 25 - 1; i < stations.length; i = i + max)
+      parts.push(stations.slice(i, i + max + 1));
+
+    // Service callback to process service results
+    var service_callback = function(response, status) {
+      if (status != "OK") {
+        console.log("Directions request failed due to " + status);
+        return;
+      }
+      var renderer = new google.maps.DirectionsRenderer();
+      renderer.setMap(map);
+      renderer.setOptions({
+        suppressMarkers: true,
+        preserveViewport: true
+      });
+      renderer.setDirections(response);
+    };
+
+    // Send requests to service to get route (for stations count <= 25 only one request will be sent)
+    for (var i = 0; i < parts.length; i++) {
+      // Waypoints does not include first station (origin) and last station (destination)
+      var waypoints = [];
+      for (var j = 1; j < parts[i].length - 1; j++)
+        waypoints.push({ location: parts[i][j], stopover: false });
+      // Service options
+      var service_options = {
+        origin: parts[i][0],
+        destination: parts[i][parts[i].length - 1],
+        waypoints: waypoints,
+        travelMode: "WALKING"
+      };
+      // Send request
+      service.route(service_options, service_callback);
+    }
+  }
+</script>
+<script
+  async
+  defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfU0HHr85-TMjYIwntpK0utMjlw7naDrM
+  &callback=initMap"
+></script> -->
+<!-- <script>
+  function initialize() {
+    var stations = [];
+
+    $.ajax({
+      type: "GET",
+      url: "/Route/all",
+      contentType: "application/json",
+      success: function(data) {
+        stations = data;
+      },
+      async: false // <- this turns it into synchronous
+    });
+    console.log(stations);
+
+    // Zoom and center map automatically by stations (each station will be in visible map area)
+    var lngs = stations.map(function(station) {
+      return station.lng;
+    });
+    var lats = stations.map(function(station) {
+      return station.lat;
+    });
+    map.fitBounds({
+      west: Math.min.apply(null, lngs),
+      east: Math.max.apply(null, lngs),
+      north: Math.min.apply(null, lats),
+      south: Math.max.apply(null, lats)
+    });
+
+    // Show stations on the map as markers
+    for (var i = 0; i < stations.length; i++) {
+      var marker = new google.maps.Marker({
+        position: stations[i],
+        map: map,
+        title: stations[i].name,
+        icon: "https://img.icons8.com/color/20/000000/trolleybus.png"
+      });
+      markers.push(marker);
+    }
+
+    // Divide route to several parts because max stations limit is 25 (23 waypoints + 1 origin + 1 destination)
+    for (var i = 0, parts = [], max = 25 - 1; i < stations.length; i = i + max)
+      parts.push(stations.slice(i, i + max + 1));
+
+    // Service callback to process service results
+    var service_callback = function(response, status) {
+      if (status != "OK") {
+        console.log("Directions request failed due to " + status);
+        return;
+      }
+      var renderer = new google.maps.DirectionsRenderer();
+      renderer.setMap(map);
+      renderer.setOptions({
+        suppressMarkers: true,
+        preserveViewport: true
+      });
+      renderer.setDirections(response);
+    };
+
+    // Send requests to service to get route (for stations count <= 25 only one request will be sent)
+    for (var i = 0; i < parts.length; i++) {
+      // Waypoints does not include first station (origin) and last station (destination)
+      var waypoints = [];
+      for (var j = 1; j < parts[i].length - 1; j++)
+        waypoints.push({ location: parts[i][j], stopover: false });
+      // Service options
+      var service_options = {
+        origin: parts[i][0],
+        destination: parts[i][parts[i].length - 1],
+        waypoints: waypoints,
+        travelMode: "WALKING"
+      };
+      routes.push(service_options);
+      // Send request
+      service.route(service_options, service_callback);
+    }
+  }
+</script> -->

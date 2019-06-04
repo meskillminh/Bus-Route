@@ -1,0 +1,101 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>QUẢN TRỊ VIÊN</h1>
+    <br />
+    <!-- search form -->
+    <div>
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-12 text-right">
+          <a href="/signuppage">
+            <button class="btn btn-primary ">Add</button></a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- /.search form -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <% user.forEach(function(user){ %>
+    <!-- <div class="row">
+      <div class="col-12">
+        <div class="box">
+          <div class="box-header">
+            <div class="col-md-4 text-left"></div>
+            <div class="col-12 text-right">
+              <a href="/edituser/<%=user.user_id%>">
+                <button class="btn btn-add">Edit</button>
+              </a>
+              <form method="POST" action="/delete/<%= user.user_id%>">
+                <button class="btn btn-add">Delete</button>
+              </form>
+            </div>
+          </div> -->
+    <div class="row">
+      <div class="col-12">
+        <div class="box">
+          <div class="box-header">
+            <!-- <div class="col-md-10"></div> -->
+            <div class="col-md-12 text-right justify-content-end row">
+              <div
+                class="row align-content-stretch col-2 justify-content-around"
+              >
+                <a href="/edituser/<%=user.user_id%>">
+                  <button class="btn btn-primary">Edit</button>
+                </a>
+
+                <form method="POST" action="/delete/<%= user.user_id%>">
+                  <button class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example2" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Mã user</th>
+                  <th>Họ Tên</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= user. user_id%></td>
+                  <td><%= user.lastname%> <%= user.firstname%></td>
+                  <td><%= user.email%></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <% }) %>
+  </section>
+</div>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Create the tabs -->
+  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+    <li>
+      <a href="#control-sidebar-home-tab" data-toggle="tab"
+        ><i class="fa fa-home"></i
+      ></a>
+    </li>
+    <li>
+      <a href="#control-sidebar-settings-tab" data-toggle="tab"
+        ><i class="fa fa-gears"></i
+      ></a>
+    </li>
+  </ul>
+</aside>
+<!-- /.control-sidebar -->
+<div class="control-sidebar-bg"></div>

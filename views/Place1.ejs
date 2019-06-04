@@ -1,0 +1,107 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Place Form
+      <small>Test</small>
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <section class='content'>
+    <div class='row' style='margin-bottom: 15px'>
+      <div class='col-md-1 text-right'>
+        <label>Mã Tuyến</label>
+      </div>
+      <div class='col-md-11'>
+        <input type="text" class="form-control" id="usr">
+      </div>
+    </div>
+
+    <div class='row' style='margin-bottom: 15px'>
+      <div class='col-md-1 text-right'>
+        <label>From</label>
+      </div>
+      <div class='col-md-11'>
+        <input type="text" class="form-control" id="usr">
+      </div>
+    </div>
+    <div class='row' style='margin-bottom: 15px'>
+      <div class='col-md-1 text-right'>
+        <label>To</label>
+      </div>
+      <div class='col-md-11'>
+        <input type="text" class="form-control" id="usr">
+      </div>
+    </div>
+    <div id='place'>
+      <div class='row' id="1" style='margin-bottom: 15px'>
+        <div class='col-md-1 text-right'>
+          <label>Places</label>
+        </div>
+        <div class='col-md-9'>
+          <select class="form-control">
+            <option>Place1</option>
+            <option>Place1</option>
+            <option>Place1</option>
+          </select>
+        </div>
+        <div class='col-md-2 text-right'>
+          <button class='btn btn-add' onclick="addPlance();"><i class="fa fa-plus" aria-hidden="true"></i></button>
+          <button class='btn btn-add' data-id="1" onclick="removePlance(this);"><i class="fa fa-minus" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Create the tabs -->
+  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+    <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+  </ul>
+</aside>
+<!-- /.control-sidebar -->
+<div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+<script>
+    const html = `<div class='row addPlace' style='margin-bottom: 15px'>
+        <div class='col-md-1 text-right'>
+            <label>Places</label>
+        </div>
+        <div class='col-md-9'>
+            <select class="form-control">
+                <option>Place1</option>
+                <option>Place1</option>
+                <option>Place1</option>
+            </select>
+        </div>
+        <div class='col-md-2 text-right'>
+            <button class='btn btn-add' onclick="addPlance();"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <button class='btn btn-minus' onclick="removePlance(this);"><i class="fa fa-minus" aria-hidden="true"></i></button>
+        </div>
+    </div>`;
+function addPlance() {
+  for(var i=0;i<1;i++){
+    console.log(i);
+    $('.btn-minus').attr('data-id',i);
+    $('.addPlace').attr('id',i);
+    $('#place').prepend(html);
+  }
+} 
+function removePlance(element) {
+  var id=$(element).data('id');
+  console.log(id);
+  $('#'+id).remove();
+}
+<footer class="main-footer">
+  <div class='row' style='margin-left: 90%'>
+    <b>
+      <button>Save</button>
+      <button>Cancel</button>
+    </b>
+  </div>
+</footer>

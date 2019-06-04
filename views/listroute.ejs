@@ -1,0 +1,112 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>TUYẾN</h1>
+    <br />
+    <!-- search form -->
+    <div>
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Search</label>
+        </div>
+        <form method="post" action="/Route/findforadmin" id="formsearchroute">
+          <div class="col-md-12">
+            <input
+              type="text"
+              class="form-control"
+              id="usr"
+              name="searchtext"
+            />
+          </div>
+        </form>
+        <div class="col-md-5">
+          <button
+            type="submit"
+            form="formsearchroute"
+            class="btn btn-add"
+            style="margin-left: -5%"
+          >
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-md-3 text-right">
+          <a href="/Route/viewformaddroute/">
+            <button class="btn btn-primary ">Add</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- /.search form -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <% routes.forEach(function(route){ %>
+    <div class="row">
+      <div class="col-12">
+        <div class="box">
+          <div class="box-header">
+            <!-- <div class="col-md-10"></div> -->
+            <div class="col-md-12 text-right justify-content-end row">
+              <div
+                class="row align-content-stretch col-2 justify-content-around"
+              >
+                <a href="/Route/edit/<%= route.id %>">
+                  <button class="btn btn-primary">Edit</button>
+                </a>
+
+                <form method="POST" action="/Route/delete/<%= route.id%>">
+                  <button class="btn btn-danger">Delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <table id="example2" class="table table-bordered table-hover">
+              <thead>
+                <tr>
+                  <th>Mã tuyến</th>
+                  <th>Điểm Đi</th>
+                  <th>Điểm Đến</th>
+                  <th>Lượt</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= route.Routeno%></td>
+                  <td><%= route.from%></td>
+                  <td><%= route.To%></td>
+                  <td><%if (route.status==true){%>Đi<%}else{%>Về<%}%></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    <% }) %>
+  </section>
+</div>
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Create the tabs -->
+  <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+    <li>
+      <a href="#control-sidebar-home-tab" data-toggle="tab"
+        ><i class="fa fa-home"></i
+      ></a>
+    </li>
+    <li>
+      <a href="#control-sidebar-settings-tab" data-toggle="tab"
+        ><i class="fa fa-gears"></i
+      ></a>
+    </li>
+  </ul>
+</aside>
+<!-- /.control-sidebar -->
+<div class="control-sidebar-bg"></div>

@@ -1,0 +1,176 @@
+<style>
+  .form-control {
+    border-radius: 5px;
+  }
+</style>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      THÊM TRẠM
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <form method="post" action="/Place/addplace/">
+    <section class="content">
+      <!-- <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Mã Tuyến</label>
+        </div>
+        <div class="col-md-11">
+          <input type="text" class="form-control" id="usr" name="" />
+        </div>
+      </div> -->
+
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Tên Trạm</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="text"
+            class="form-control"
+            id="usr"
+            name="Name"
+            required="required"
+          />
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Vĩ Độ</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="text"
+            class="form-control"
+            id="usr"
+            name="Lat"
+            required="required"
+          />
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Tung Độ</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="text"
+            class="form-control"
+            id="usr"
+            name="Long"
+            required="required"
+          />
+        </div>
+      </div>
+
+      <!-- <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>To</label>
+        </div>
+        <div class="col-md-11">
+          <input type="text" class="form-control" id="usr" name="To"/>
+        </div>
+      </div> -->
+      <!-- <div id="place">
+        <div class="row" id="1" style="margin-bottom: 15px">
+          <div class="col-md-1 text-right">
+            <label>Places</label>
+          </div>
+          <div class="col-md-9">
+            <select class="form-control" name="routes">
+              <% routes.forEach(function(route){ %>
+              <option value="<%= route.id %>"><%= route.id %></option>
+              <% }) %>
+            </select>
+          </div>
+          <div class="col-md-2 text-right">
+            <button type="button" class="btn btn-add" onclick="addPlance();">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-add"
+              data-id="1"
+              onclick="removePlance(this);"
+            >
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div> -->
+    </section>
+    <footer>
+      <div class="col-md-12 text-right" style="padding-bottom: 20px">
+        <input type="submit" value="Lưu" class="btn btn-primary" />
+        <input type="reset" value="Hủy" class="btn btn-primary" />
+      </div>
+    </footer>
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Create the tabs -->
+      <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li>
+          <a href="#control-sidebar-home-tab" data-toggle="tab"
+            ><i class="fa fa-home"></i
+          ></a>
+        </li>
+        <li>
+          <a href="#control-sidebar-settings-tab" data-toggle="tab"
+            ><i class="fa fa-gears"></i
+          ></a>
+        </li>
+      </ul>
+    </aside>
+    <!-- /.control-sidebar -->
+    <div class="control-sidebar-bg"></div>
+    <!-- <footer class="main-footer">
+     <div class="row" style="margin-left: 90%">
+       <b>
+         <input type="submit" value="save" class="btn btn-primary" />
+         <!-- <button>Cancel</button> -->
+    <!-- </b>
+     </div>
+   </footer>  -->
+  </form>
+</div>
+
+<!-- Control Sidebar -->
+
+<!-- ./wrapper -->
+<!-- <script>
+  const html = `<div class='row addPlace' style='margin-bottom: 15px'>
+          <div class='col-md-1 text-right'>
+              <label>Places</label>
+          </div>
+          <div class='col-md-9'>
+              <select class="form-control" name="routes">
+                <% routes.forEach(function(route){ %>
+                <option value="<%= route.id %>"><%= route.id %></option>
+                <% }) %>
+              </select>
+          </div>
+          <div class='col-md-2 text-right'>
+              <button type="button" class='btn btn-add' onclick="addPlance();"><i class="fa fa-plus" aria-hidden="true"></i></button>
+              <button type="button" class='btn btn-minus' onclick="removePlance(this);"><i class="fa fa-minus" aria-hidden="true"></i></button>
+          </div>
+      </div>`;
+  function addPlance() {
+    for (var i = 0; i < 1; i++) {
+      console.log(i);
+      $(".btn-minus").attr("data-id", i);
+      $(".addPlace").attr("id", i);
+      $("#place").prepend(html);
+    }
+  }
+  function removePlance(element) {
+    var id = $(element).data("id");
+    console.log(id);
+    $("#" + id).remove();
+  }
+</script> -->

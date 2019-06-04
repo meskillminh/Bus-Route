@@ -1,0 +1,112 @@
+<!-- <h1>Signup</h1>
+<form action="/signup" method="post">
+
+  <label for="name">What's your name?</label>
+  <input name="name" type="text"/>
+  <br/>
+
+  <label for="email">What's your email?</label>
+  <input name="email" type="text"/>
+  <br/>
+
+  <label for="password">Choose a Password</label>
+  <input name="password" type="password"/>
+  <br/>
+
+  <input type="submit"/>
+</form> -->
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      ĐĂNG KÝ
+    </h1>
+  </section>
+
+  <!-- Main content -->
+  <form action="/signup" method="post">
+    <section class="content">
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Họ</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="text"
+            required="required"
+            class="form-control"
+            id="usr"
+            name="lastname"
+          />
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Tên</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="text"
+            required="required"
+            class="form-control"
+            id="usr"
+            name="firstname"
+          />
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Email</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="email"
+            required="required"
+            class="form-control"
+            id="usr"
+            name="email"
+          />
+        </div>
+      </div>
+
+      <div class="row" style="margin-bottom: 15px">
+        <div class="col-md-1 text-right">
+          <label>Password</label>
+        </div>
+        <div class="col-md-11">
+          <input
+            type="password"
+            required="required"
+            class="form-control"
+            id="usr"
+            name="password"
+          />
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="col-md-12 text-right" style="padding-bottom: 20px">
+        <input type="submit" value="Lưu" class="btn btn-primary" />
+        <input type="reset" value="Hủy" class="btn btn-primary" />
+      </div>
+    </footer>
+    <aside class="control-sidebar control-sidebar-dark">
+      <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li>
+          <a href="#control-sidebar-home-tab" data-toggle="tab"
+            ><i class="fa fa-home"></i
+          ></a>
+        </li>
+        <li>
+          <a href="#control-sidebar-settings-tab" data-toggle="tab"
+            ><i class="fa fa-gears"></i
+          ></a>
+        </li>
+      </ul>
+    </aside>
+    <!-- /.control-sidebar -->
+    <div class="control-sidebar-bg"></div>
+  </form>
+</div>

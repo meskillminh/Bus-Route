@@ -1,0 +1,119 @@
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>TRẠM</h1>
+      <br />
+      <!-- search form -->
+      <div>
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-1 text-right">
+            <label>Search</label>
+          </div>
+          <form method="post" action="/Place/find/" id="formsearch">
+          <div class="col-md-12">
+            <input type="text" class="form-control" id="usr" name="id" />
+          </div>
+        </form>
+          <div class="col-md-5">
+            <button type="submit" form="formsearch" class="btn btn-add" style="margin-left: -5%">
+              <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="col-md 3 text-right">
+            <a href="/Place/viewfromaddplace/"><button class="btn btn-primary">Add</button></a>
+          
+           
+          </div>
+        </div>
+      </div>
+      <!-- /.search form -->
+    </section>
+   
+    <section class="content">
+       <% places.forEach(function(place){ %>
+      <!-- <div class="row">
+        <div class="col-12">
+          <div class="box">
+            <div class="box-header">
+              <div
+                class="row align-content-stretch col-2 justify-content-around"
+              >
+                  <a href="/Place/edit/<%= place.id %>"><button class="btn btn-add">Edit</button></a>
+                <form action="/Place/delete/<%= place.id %>"
+                  method="POST">
+                  <button class="btn btn-danger">Delete</button>
+               </form>
+              </div>
+            </div>
+          </div> -->
+          <div class="row">
+            <div class="col-12">
+              <div class="box">
+                <div class="box-header">
+                  <!-- <div class="col-md-10"></div> -->
+                  <div class="col-md-12 text-right justify-content-end row">
+                    <div
+                      class="row align-content-stretch col-2 justify-content-around"
+                    >
+                    <a href="/Place/edit/<%= place.id %>">
+                        <button class="btn btn-primary">Edit</button>
+                      </a>
+      
+                      <form action="/Place/delete/<%= place.id %>">
+                        <button class="btn btn-danger">Delete</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+            <!-- /.box-header -->
+
+            <div class="box-body">
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                  <tr class="column col-12"> 
+                    <th class="flex-fill">Mã trạm</th>
+                    <th class="flex-fill"  >Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="column col-12">
+                    <td  class="flex-fill" style="
+                    width: 50vw;"><%= place.id %></td>
+                     <td  class="flex-fill" style="
+                     width: 50vw;"><%= place.Name %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- /.box-body -->
+          </div>
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+        <% }) %>
+    </section>
+  
+    <!-- Control Sidebar -->
+  </div>
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Create the tabs -->
+      <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+        <li>
+          <a href="#control-sidebar-home-tab" data-toggle="tab"
+            ><i class="fa fa-home"></i
+          ></a>
+        </li>
+        <li>
+          <a href="#control-sidebar-settings-tab" data-toggle="tab"
+            ><i class="fa fa-gears"></i
+          ></a>
+        </li>
+      </ul>
+    </aside>
+    <!-- /.control-sidebar -->
+    <div class="control-sidebar-bg"></div>
+  </div>

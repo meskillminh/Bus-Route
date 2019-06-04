@@ -1,0 +1,497 @@
+﻿.ui-mid-left-content-route-result-bound
+{
+    padding:0 0 0 10px;
+    position:absolute;    
+    -moz-box-sizing: border-box;
+    overflow-y:hidden;
+}
+.ui-mid-left-content-route-result-content
+{
+    padding:0px;
+    position:relative;
+}
+.ui-route-result-item-title-none
+{
+    background-color:#ffffff;
+}
+.ui-route-result-item-title-focus
+{
+    background-color:#f5f4f4;
+}
+
+.ui-route-result-item-title-none,.ui-route-result-item-title-focus {
+    cursor:pointer;
+    padding:10px 0 6px 4px;
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none;
+    clear: both;
+    overflow: auto;
+}
+
+.ui-route-result-item-pa-left {
+    float: left;
+    width: 80%;
+}
+
+
+.no-wrap img {
+    /*white-space: nowrap;*/
+    padding: 3px 0;
+}
+
+.ui-route-result-item-title-arrow {
+    background: url("../images/route/dp11.png") no-repeat scroll 0 -52px rgba(0, 0, 0, 0);
+    height: 9px;
+    width: 8px;
+}
+.ui-route-result-item-title-plan {
+    top: 2px;
+    vertical-align: -2px;
+}
+.ui-route-result-item-title-line {
+    display: inline;
+}
+.ui-route-result-item-title-line-icon {
+    top: 0;
+    height: 15px;
+    vertical-align: -3px;
+    width: 15px;
+}
+.ui-route-result-item-title-line-name {
+    font-family:Tahoma;
+    font-size:11px;
+    font-weight: bold;
+    padding:0 4px 0 4px;
+}
+
+.ui-route-result-item-detail
+{
+    border-bottom:solid 1px #e6e6e6;
+    background-color:#ffffff;
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none;
+    font-family:Tahoma;
+    font-size:12px;
+    padding-left:10px;
+}
+.dir-ts-icon {
+    display: inline;
+    line-height: 1px;
+    padding-right: 0.2em;
+    padding-top: 0;
+}
+.dir-ts-direction {
+    display: inline;
+}
+.dir-ts-walk {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 5px;
+    border-bottom:solid 1px #e6e6e6;
+}
+.dir-ts-addinfopad
+{
+    
+}
+.altroute-rcol {
+    /*clear: right;*/
+    float: right;
+    /*margin-left: 7px;*/
+    font-family:Tahoma;
+    font-size:12px;
+    width: 20%;
+    text-align: center;
+    /*padding:0 5px 0 0;*/
+}
+.ui-route-result-waiting
+{
+    padding-top:10px;
+    text-align:center;
+}
+.ui-route-result-none
+{
+    padding-top:10px;
+    font-family:Tahoma;
+    font-size:14px;
+    text-align:center;
+}
+.ui-route-result-item-start-end
+{
+    cursor:pointer;
+}
+
+
+.rt-info-win-start-end-title
+{
+    font-family:Tahoma;
+    font-size:14px;
+    font-weight:bold;
+    padding-bottom:5px;
+}
+.rt-info-win-start-end-content
+{
+    font-family:Tahoma;
+    font-size:13px;
+}
+
+.search-station-vehicle-over-bound
+{
+    direction: ltr; 
+    overflow: hidden; 
+    text-align: left; 
+    position: relative; 
+    color: rgb(0, 0, 0); 
+    width:450px;
+    margin-top:5px;
+    padding:15px;
+    background: none repeat scroll 0% 0% rgb(255, 255, 255); 
+    border: 1px solid rgb(113, 123, 135); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+.search-station-vehicle-over-close
+{
+    position:absolute;
+    top: 5px;
+    right: 5px;
+    background: url("../images/search/close.png");
+    height: 10px;
+    width: 10px;   
+    cursor:pointer;
+}
+.search-station-vehicle-over-title
+{
+    font-family: Tahoma;
+    font-size: 14px;
+    padding: 0 0 4px 0;
+}
+.search-station-vehicle-over-content
+{
+    font-family: Tahoma;
+    font-size: 14px;     
+}
+
+
+.search-fleet-detail-bound
+{
+    direction: ltr; 
+    overflow: hidden; 
+    text-align: left; 
+    position: relative; 
+    color: rgb(0, 0, 0); 
+    width:500px;
+    margin-bottom:8px;
+    padding:10px 15px 10px 15px;
+    background: none repeat scroll 0% 0% rgb(255, 255, 255); 
+    border: 1px solid rgb(113, 123, 135); 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+.search-fleet-detail-close
+{
+    position:absolute;
+    top: 10px;
+    right: 10px;
+    background: url("../images/search/close.png");
+    height: 10px;
+    width: 10px;   
+    cursor:pointer;
+}
+.search-fleet-detail-title
+{
+    font-family: Tahoma;
+    font-size: 14px;
+    font-weight:bold;
+    padding-bottom:5px;
+}
+
+.search-fleet-detail-tab-blank
+{
+    border-top:solid 1px #ABABAB;
+}
+.search-fleet-detail-tab-title-focus
+{
+    border-top:solid 1px #ffffff;
+    border-right:solid 1px #ABABAB;
+    border-bottom:solid 1px #ABABAB;
+    border-left:solid 1px #ABABAB;
+    text-align:center;
+    font-family: Tahoma;
+    font-size: 13px;
+    font-weight:bold;
+    padding:4px;
+    width:80px;
+    cursor:pointer;
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none;
+}
+.search-fleet-detail-tab-title-none
+{
+    border:solid 1px #ABABAB;
+    text-align:center;
+    font-family: Tahoma;
+    font-size: 13px;
+    padding:4px;
+    width:80px;
+    cursor:pointer;
+    -moz-user-select: none; 
+    -khtml-user-select: none; 
+    -webkit-user-select: none;
+}
+
+.search-fleet-detail-content
+{
+    font-family: Tahoma;
+    padding-bottom:5px;
+}
+.search-fleet-detail-info-header
+{
+    font-family: Tahoma;
+    font-weight:bold;
+    font-size: 11px;
+}
+.search-fleet-detail-info-content
+{
+    font-family: Tahoma;
+    font-size: 13px;
+}
+.search-fleet-detail-trajection-title
+{
+    font-family: Tahoma;
+    font-size: 14px;
+}
+.search-fleet-detail-trajection-content
+{
+    font-family: Tahoma;
+    font-size: 13px;
+}
+
+
+
+
+.ui-mid-left-content-search-result-bound
+{
+    margin-top:1px;
+    padding:0 0 0 10px;
+    position:absolute;    
+    -moz-box-sizing: border-box;
+    overflow-y:hidden;
+}
+.ui-mid-left-content-search-result-title
+{
+    font-size: 12px;
+    padding:10px 0 20px 10px;
+}
+.ui-mid-left-content-search-result-title-close
+{
+    position:absolute;
+    top:15px;
+    right:8px;
+    cursor:pointer;
+}
+.ui-mid-left-content-search-result-content
+{
+    padding:0px;
+    position:relative;
+}
+.ui-mid-left-content-search-result-item
+{
+    padding:4px;
+    border-bottom:dashed 1px #E3E9EF;
+}
+.ui-sr-itm-name
+{
+    font-family:Tahoma;
+    font-size:14px;
+    color:blue;
+    padding-bottom:2px;
+}
+.ui-sr-itm-data
+{
+    font-family:Tahoma;
+    font-size:12px;
+}
+
+.sr-info-win-content
+{    
+    padding:0 0 8px 0;
+}
+.sr-info-win-station-title
+{
+    font-family:Tahoma;
+    font-size:14px;
+    font-weight:bold;
+    padding-bottom:5px;
+}
+.sr-info-win-station-content
+{
+    font-family:Tahoma;
+    font-size:13px;
+}
+
+.sr-info-win-bottom-panel
+{
+    border-top:solid 1px #F0F0E7;
+    padding:5px 0 0 5px;
+    width:100%;
+    overflow: hidden;
+}
+.sr-info-win-bottom-left
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+}
+.sr-info-win-bottom-left a
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+    text-decoration:none;
+}
+.sr-info-win-bottom-left a:hover
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+    text-decoration:underline;
+}
+
+.sr-info-win-bottom-center
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:center;
+    padding:0 20px 0 20px;
+}
+.sr-info-win-bottom-center a
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:center;
+    text-decoration:none;
+}
+.sr-info-win-bottom-center a:hover
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:center;
+    text-decoration:underline;
+}
+
+.sr-info-win-bottom-right
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:right;
+}
+.sr-info-win-bottom-right a
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+    text-decoration:none;
+}
+.sr-info-win-bottom-right a:hover
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+    text-decoration:underline;
+}
+
+.sr-vehicle-over-station-table {
+    width: 100%;
+    border-top: solid 1px #F0F0E7;
+    font-family: Tahoma;
+    font-size: 12px;
+}
+.sr-vehicle-over-station-bks
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+    padding:4px 0 4px 0;
+    width:120px;
+}
+.sr-vehicle-over-station-flt
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+    padding:4px 0 4px 0;
+    width:80px;
+}
+.sr-vehicle-over-station-prm
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+    padding:4px 0 4px 0;
+}
+.sr-vehicle-over-station-trm
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+    padding:4px 0 4px 0;
+}
+.sr-vehicle-over-station-time
+{
+    font-family:Tahoma;
+    font-size:11px;
+    text-align:right;
+    padding:4px 0 0 0;
+    border-top:solid 1px #F0F0E7;
+}
+
+.sr-vos-fleet-table
+{
+    width:100%;
+}
+.sr-vos-fleet-text
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-align:left;
+    padding:1px 0 4px 0;
+    width:44px;
+}
+.sr-vos-fleet-checkbox
+{
+    width:16px;
+    padding:1px 0 3px 0;
+}
+.sr-vos-fleet-fleetcode
+{
+    font-family:Tahoma;
+    font-size:12px;
+    font-weight:bold;
+    text-align:left;
+    padding:1px 0 4px 0;
+    width:16px;
+}
+
+
+
+.printf-input-lable
+{
+    font-family:Tahoma;
+    font-size:14px;
+    font-weight:bold;
+    width:90px;
+    padding:2px 0 0 0;
+}
+
+.printf-input-value
+{
+    font-family:Tahoma;
+    font-size:14px;
+    padding:2px 0 0 0;
+}
+
+.center-follow {
+    text-align: center;
+    vertical-align: middle;
+}

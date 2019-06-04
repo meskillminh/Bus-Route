@@ -1,0 +1,17 @@
+<div id="map"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script>
+  var stations = [];
+
+  $.ajax({
+    type: "GET",
+    url: "Place/data",
+    contentType: "application/json",
+    success: function(data) {
+      stations = data;
+    },
+    async: false // <- this turns it into synchronous
+  });
+
+  console.log(stations);
+</script>

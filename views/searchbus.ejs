@@ -1,0 +1,140 @@
+
+    <div id="left" class="ui-left">
+        <div id="lft-hdr-bnd">
+            <ul class="tabs clearfix">
+                <li id="lft-hdr-li-rt" onclick="TSC.switchMenuOpt(1);"><a href="javascript:void(0)"
+                        class="tab active">Tìm đường</a></li>
+                <li id="lft-hdr-li-rs" onclick="TSC.switchMenuOpt(2);"><a href="javascript:void(0)" class="tab">Tra
+                        cứu</a></li>
+            </ul>
+            <div id="lft-hdr-tog-map" class="ui-left-tog-map">
+                <img src="images/home/left-hide.png" class="ui-left-tog-map-img" />
+            </div>
+            <div class="content" style="width: 100%;"></div>
+        </div>
+        <!-- Tìm đường -->
+        <div id="lft-rt-opt" class="ui-lft-rt-opt-bound">
+            <table width="100%" style="position: absolute; top: -5px;">
+
+                <tr style="height: 35px;">
+                    <td rowspan="3" class="ui-lft-rt-opt-bl"></td>
+                    <td class="ui-lft-rt-opt-lb">Điểm đi:</td>
+                    <td>
+                        <input type="text" id="lft-rt-opt-fr" placeholder="Nhập địa điểm xuất phát..." class="input-Search ui-lft-rt-opt-tx" style="width: 98%;">
+                        <input type="text" id="lft-rt-opt-fr-auto" placeholder="Nhập điểm xuất phát..."
+                            class="input-Search ui-lft-rt-opt-tx" onfocusout="TSC.searchFullKeyFindPointFrLostFocus()"
+                            onkeypress="TSC.searchFullKeyFindPointFr(event)"
+                            style="height: 24px; margin: 0; width: 90%; display: none" />
+                    </td>
+
+                    <td class="ui-lft-rt-opt-lc">
+                        <img id="lft-rt-opt-loc-fr" style="cursor: pointer;"></td>
+                    <td rowspan="2" style="vertical-align: middle; text-align: center; width: 26px;" id="lft-rt-opt-rvt">
+                    </td>
+                    <td rowspan="3" class="ui-lft-rt-opt-bl"></td>
+                </tr>
+                <tr style="height: 32px;">
+                    <td class="ui-lft-rt-opt-lb">Điểm đến:</td>
+                    <td>
+                        <input type="text" id="lft-rt-opt-to" placeholder="Nhập địa điểm muốn đến..." class="ui-lft-rt-opt-tx"
+                            style="width: 98%" />
+                        <input type="text" id="lft-rt-opt-to-auto" placeholder="Nhập địa điểm muốn đến..."
+                            class="input-Search ui-lft-rt-opt-tx" onfocusout="TSC.searchFullKeyFindPointToLostFocus()"
+                            onkeypress="TSC.searchFullKeyFindPointTo(event)"
+                            style="height: 24px; margin: 0; width: 90%; display: none" />
+                    </td>
+                    <td class="ui-lft-rt-opt-lc">
+                        <img id="lft-rt-opt-loc-to" style="cursor: pointer;"></td>
+                </tr>
+                <tr style="height: 35px; display: none;" id="lft-rt-opt-tp-bn">
+                    <td id="lft-rt-opt-tp" ></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="ui-lft-rt-opt-btm input-form btn-block" style="padding: 15px">
+                        <table width="100%">
+                            <button type="button" class="search-btn" onclick="debugger; TSC.searchFull();">Tìm đường</button>
+                            <!-- <tr>
+                            <br>
+                                <td width="30" id="alt-printf">
+                                <td width="104">
+                                    <input type="button" id="lft-rt-opt-btn" class="search-btn"
+                                        onclick="TSC.routeByClick();" />Tìm đường</td>
+                            </tr> -->
+                        </table>
+                    </td>
+                    <td colspan="2" class="ui-lft-rt-opt-clr" id="lft-rt-opt-clr"></td>
+                </tr>
+            </table>
+        </div>
+        <!-- ./Tìm đường -->
+
+        <!-- Tra cứu -->
+        <div class="ui-lft-rt-opt-bound" id="lft-find-bnd" style="height: 100px; display: none">
+            <form role="search">
+                <table width="100%" style="position: absolute; top: -5px;">
+                    <!-- <tr style="height: 35px;">
+                        <td class="ui-lft-rt-opt-lb">Loại điểm:</td>
+                        <td>
+                            <select id="banner-search-type" class="ui-lft-rt-opt-tx-search"
+                                onchange="changeSearchType(this);">
+                                <option value="1" selected="selected">Tuyến bus</option>
+                                <option value="2">Điểm dừng</option>
+                                <option value="3">Điểm bán vé</option>
+                                <option value="4">Điểm giữ xe</option>
+                                <option value="5">Điểm dịch vụ</option>
+                            </select>
+                        </td>
+                    </tr> -->
+                    <tr style="height: 32px;">
+                        <td class="ui-lft-rt-opt-lb">Từ khóa:</td>
+                        <td>
+                            <input type="text" class="ui-lft-rt-opt-tx-search" id="banner-search-key"
+                                onkeyup="TSC.searchFullKey(event)" placeholder="Tìm tuyến..."/>
+                        </td>
+                    </tr>
+                    <td colspan="2" style="text-indent: 20px; padding: 20px">
+                        <button type="button" class="search-btn" onclick="debugger; TSC.searchFull();">Chọn</button>
+                    </td>
+                </table>
+            </form>
+        </div>
+        <!-- ./Tra cứu-->
+        <div id="lft-app-bnd" style="padding: 10px 0 0 13px;">
+        </div>
+
+        <div id="lft-adv-bnd" >
+            <div id="lft-adv-ctn" >
+            </div>
+        </div>
+        <div id="lft-rt-rlt-bnd" class="ui-lft-rt-rlt-bnd" style="display: none;">
+            <div id="lft-rt-rlt-cnt" class="ui-lft-rt-rlt-cnt"></div>
+        </div>
+
+        <div id="lft-sr-rlt-opt">
+            <p id="center-left-search-result-title-text"></p>
+            <img id="center-left-search-result-title-image">
+        </div>
+
+        <div id="lft-sr-rlt-bnd">
+            <div id="lft-sr-rlt-cnt"></div>
+        </div>
+
+        <!-- <div id="search-fleet-detail" style="display: none;">
+            <div id="search-fleet-detail-fr"></div>
+            <div id="search-fleet-detail-go"></div>
+            <div id="search-fleet-detail-re"></div>
+        </div> -->
+
+        <div id="lft-ftr-copy-right" class="ui-lft-ftr-cpy-bnd">
+            <div class="footer">Wecome come to Bus Route - Bui Ngoc Minh - Tran Thanh Minh</div>
+        </div>
+    </div>
+    <div id="center" style="position: relative;">
+        <div id="msh-top-bnd" class="m-b-h">
+        </div>
+        <div id="msh-lft-bnd" class="m-b-w">
+        </div>
+        <div id="tog-show-left" class="ui-center-togger-left"></div>
+        <div id="maps" class="ui-center-maps"></div>
+    </div>
+   

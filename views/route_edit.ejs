@@ -1,0 +1,225 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.3/themes/ui-lightness/jquery-ui.css">
+<script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- Content Wrapper. Contains page content -->
+    <form method="post" action="/Route/update/<%= routes.id%>" id="formupdate">
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Chỉnh Sửa Tuyến
+         
+        </h1>
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-2 text-right">
+            <label>Mã Tuyến</label>
+          </div>
+          <div class="col-md-10">
+            <input type="number" class="form-control" id="usr" name="matuyen" value="<%= routes.Routeno%>"  required="required"/>
+          </div>
+        </div>
+  
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-2 text-right">
+            <label>Điểm Đi</label>
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="form-control" id="usr" name="from" value="<%= routes.from%>"  required="required"/>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-2 text-right">
+            <label>Điểm Đến</label>
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="form-control" id="usr" name="to" value="<%= routes.To%>"  required="required"/>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 15px">
+            <div class="col-md-2 text-right">
+              <label>Thời gian hoạt động</label>
+            </div>
+            <div class="col-md-10">
+              <input type="text" class="form-control"  name="time"  required="required" value="<%= routes.time%>"/>
+            </div>
+          </div>
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-2 text-right">
+            <label>Loại Tuyến</label>
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="form-control"  name="type"  required="required" value="<%= routes.type%>"/>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-2 text-right">
+            <label>Giá Vé</label>
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="form-control" name="price"  required="required" value="<%= routes.price%>"/>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-2 text-right">
+            <label>Giá Vé Tháng</label>
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="form-control" name="pricemonth"  required="required" value="<%= routes.pricemonth%>"/>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-2 text-right">
+            <label>Độ Dài Tuyến</label>
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="form-control" name="distance"  required="required" value="<%= routes.distance%>"/>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-2 text-right">
+            <label>Thời Gian Chờ</label>
+          </div>
+          <div class="col-md-10">
+            <input type="text" class="form-control" name="waittime"  required="required" value="<%= routes.waittime%>"/>
+          </div>
+        </div>
+        <div class="row" style="margin-bottom: 15px">
+          <div class="col-md-2 text-right">
+            <label>Lượt</label>
+          </div>
+          <div class="col-md-10">
+            <select class="form-control" name="status">
+              <%if(routes.status==true){%>
+              
+              <option selected value="<%= routes.status%>">Đi</option>
+              <option value="false">Về</option>
+              <%}else{%>
+                <option value="true">Đi</option>
+                <option selected value="<%= routes.status%>">Về</option>
+                
+                <%}%>
+             
+            </select>
+          </div>
+        </div>
+
+
+
+        <div id="place">
+            <div id="sortable" >
+                <% indexplace.forEach(function(place){ %>
+              <div class="row" id="1" style="margin-bottom: 15px">
+                <div class="col-md-2 text-right">
+                  <label>Places</label>
+                </div>
+                <div class="col-md-8">
+                  <select class="form-control" name="places">
+                   
+                    <option value="<%= place.id%>"
+                      ><%= place.id%> <%=place.Name%></option
+                    >
+                  
+                  </select>
+                </div>
+                <div class="col-md-2 text-right">
+                  <button type="button" class="btn btn-add" onclick="addPlance();">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-add"
+                    data-id="1"
+                    onclick="removePlance(this);"
+                  >
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                  </button>
+                 </div>
+              </div>
+              <% }) %>
+             </div>
+            </div>
+          </section>
+          <footer>
+               <div class="col-md-12 text-right" style="padding-bottom: 20px">
+                   <input type="submit" value="Lưu" class="btn btn-primary" />
+                   <input type="reset" value="Hủy" class="btn btn-primary" />
+                 </div>
+               </footer>
+         <aside class="control-sidebar control-sidebar-dark">
+           <!-- Create the tabs -->
+           <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+             <li>
+               <a href="#control-sidebar-home-tab" data-toggle="tab"
+                 ><i class="fa fa-home"></i
+               ></a>
+             </li>
+             <li>
+               <a href="#control-sidebar-settings-tab" data-toggle="tab"
+                 ><i class="fa fa-gears"></i
+               ></a>
+             </li>
+           </ul>
+         </aside>
+         <!-- /.control-sidebar -->
+         <div class="control-sidebar-bg"></div>
+         <!-- <footer class="main-footer">
+           <div class="row" style="margin-left: 90%">
+             <b>
+               <input type="submit" value="save" class="btn btn-primary" />
+               <!-- <button>Cancel</button> -->
+             <!-- </b>
+           </div>
+         </footer>  -->
+       </form>
+     
+     </div>
+     
+     
+       <!-- /.control-sidebar -->
+       <div class="control-sidebar-bg"></div>
+     
+  
+  <!-- ./wrapper -->
+  <script>
+    const html = `<div class='row addPlace' style='margin-bottom: 15px'>
+                  <div class='col-md-2 text-right'>
+                      <label>Places</label>
+                  </div>
+                  <div class='col-md-8'>
+                    <select class="form-control" name="places">
+                      <% places.forEach(function(place){ %>
+                    <option value="<%= place.id%>"><%= place.id%> <%=place.Name%></option>
+                    <% }) %>
+                  </select>
+                </div>
+                  <div class='col-md-2 text-right'>
+                      <button type="button" class='btn btn-add' onclick="addPlance();"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                      <button type="button"  class='btn btn-minus' onclick="removePlance(this);"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                  </div>
+              </div>`;
+    function addPlance() {
+      for (var i = 0; i < 1; i++) {
+        console.log(i);
+        $(".btn-minus").attr("data-id", i);
+        $(".addPlace").attr("id", i);
+        $("#sortable").append(html);
+      }
+    }
+    function removePlance(element) {
+      $(element)
+					.closest(".row")
+
+					.remove();
+    }
+    $("#sortable").sortable();
+  </script>
+  

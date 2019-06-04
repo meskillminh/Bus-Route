@@ -1,0 +1,151 @@
+﻿body, html 
+{
+    margin:0px;
+    padding:0px;
+}
+.ad-banner-bound
+{
+    border-bottom:1px solid #ea8b1f;
+}
+.ad-banner-logo
+{
+    width:260px;
+    height:75px;
+    background-image:url(../images/logo.png) !important;
+}
+.ad-banner-account
+{
+    height:48px;
+    vertical-align:text-top;
+    padding:2px 8px 0 0;
+    text-align:right;
+    text-decoration:none;
+}
+.ad-banner-account a
+{
+    text-decoration:none;
+}
+.ad-banner-menu-bg
+{
+    height:32px;
+}
+.ad-banner-menu-item
+{
+    height:32px;
+    font-family:Tahoma;
+    font-size:12px;
+    padding:0px 5px 0 5px;
+    cursor:pointer;
+    text-align:center;
+    border-bottom:1px solid #ea8b1f;
+}
+.ad-banner-menu-item a
+{
+    font-family:Tahoma;
+    font-size:12px;
+    cursor:pointer;
+    text-decoration:none;
+}
+.ad-banner-menu-item-focus
+{
+    text-align:center;
+    height:32px;
+    font-family:Tahoma;
+    color:#FFFFFF;
+    font-size:12px;
+    padding:0px 10px 0 10px;
+    cursor:pointer;
+    background-color:#2571b0;
+    border-left:1px solid #ea8b1f;
+    border-top:1px solid #ea8b1f;
+    border-right:1px solid #ea8b1f;
+    text-decoration:none;
+}
+.ad-banner-menu-item-focus a
+{
+    text-align:center;
+    font-family:Tahoma;
+    color:#FFFFFF;
+    font-size:12px;
+    cursor:pointer;
+    text-decoration:none;
+}
+.ad-banner-menu-item-left
+{
+    width:10px;
+    border-bottom:1px solid #ea8b1f;
+}
+.ad-banner-menu-item-right
+{
+    border-bottom:1px solid #ea8b1f;
+}
+.x-under-contructor
+{
+    padding-top:120px;
+    text-align:center;
+    font-family:Tahoma;
+}
+
+.ad-reports-item
+{
+    border:solid 1px #ffa200;
+}
+.ad-reports-item-left
+{
+    border-right:solid 1px #ffa200;
+    padding:3px 3px 0 3px;
+    width:100px;
+    cursor:pointer;
+}
+.ad-reports-item-title
+{
+    font-family:Tahoma;
+    font-size:12px;
+    font-weight:bold;
+    padding:4px;
+    text-decoration:none;
+}
+.ad-reports-item-title a
+{
+    font-family:Tahoma;
+    font-size:12px;
+    font-weight:bold;
+    text-decoration:none;
+}
+.ad-reports-item-quote
+{
+    font-family:Tahoma;
+    font-size:12px;
+    padding:4px;
+    text-decoration:none;
+}
+.ad-reports-item-quote a
+{
+    font-family:Tahoma;
+    font-size:12px;
+    text-decoration:none;
+}
+.x-make-add
+{
+    background-image:url(../images/ui/add.gif) !important;
+}
+.x-make-apply
+{
+    background-image:url(../images/ui/apply.gif) !important;
+}
+.x-make-preview
+{
+    background-image:url(../images/ui/preview.png) !important;
+}
+.x-make-download
+{
+    background-image:url(../images/ui/Download.png) !important;
+}
+.x-make-upload
+{
+    background-image:url(../images/ui/Upload.png) !important;
+}
+.x-make-cancel
+{
+    background-image:url(../images/ui/cancel.gif) !important;
+}
